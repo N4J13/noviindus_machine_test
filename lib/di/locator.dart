@@ -19,6 +19,7 @@ import 'package:noviindus_machine_test/features/treatment/data/datasources/treat
 import 'package:noviindus_machine_test/features/treatment/data/repositories/treatment_repository_impl.dart';
 import 'package:noviindus_machine_test/features/treatment/domain/repositories/treatment_repository.dart';
 import 'package:noviindus_machine_test/features/treatment/domain/usecases/get_treatment_list.dart';
+import 'package:noviindus_machine_test/features/treatment/presentation/providers/treatment_provider.dart';
 
 final getIt = GetIt.instance;
 
@@ -39,10 +40,10 @@ void _registerUseCases() {
   getIt
     ..registerFactory<LoginUseCase>(() => LoginUseCase(getIt()))
     ..registerFactory<GetBranchList>(() => GetBranchList(getIt()))
-    // ..registerFactory<GetTreatmentList>(() => GetTreatmentList(getIt()))
+    ..registerFactory<GetTreatmentList>(() => GetTreatmentList(getIt()))
     ..registerFactory<GetPatientListUseCase>(
-        () => GetPatientListUseCase(getIt()));
-  // ..registerFactory<RegisterPatient>(() => RegisterPatient(getIt()));
+        () => GetPatientListUseCase(getIt()))
+    ..registerFactory<RegisterPatient>(() => RegisterPatient(getIt()));
 }
 
 // Register repositories
@@ -50,8 +51,8 @@ void _registerRepositories() {
   getIt
     ..registerFactory<AuthRepository>(() => AuthRepositoryImpl(getIt()))
     ..registerFactory<BranchRepository>(() => BranchRepositoryImpl(getIt()))
-    // ..registerFactory<TreatmentRepository>(
-    //     () => TreatmentRepositoryImpl(getIt()))
+    ..registerFactory<TreatmentRepository>(
+        () => TreatmentRepositoryImpl(getIt()))
     ..registerFactory<PatientRepository>(() => PatientRepositoryImpl(getIt()));
 }
 
@@ -62,8 +63,8 @@ void _registerDataSources() {
         () => AuthRemoteDataSource(getIt(), getIt()))
     ..registerFactory<BranchRemoteDataSource>(
         () => BranchRemoteDataSource(getIt()))
-    // ..registerFactory<TreatmentRemoteDataSource>(
-    //     () => TreatmentRemoteDataSource(getIt()))
+    ..registerFactory<TreatmentRemoteDataSource>(
+        () => TreatmentRemoteDataSource(getIt()))
     ..registerFactory<PatientRemoteDataSource>(
         () => PatientRemoteDataSource(getIt()));
 }
@@ -73,7 +74,6 @@ void _registerProviders() {
   getIt
     ..registerFactory<AuthProvider>(() => AuthProvider(getIt()))
     ..registerFactory<BranchProvider>(() => BranchProvider(getIt()))
-    // ..registerFactory<TreatmentRepository>(
-    //     () => TreatmentRepositoryImpl(getIt()))
-    ..registerFactory<PatientProvider>(() => PatientProvider(getIt()));
+    ..registerFactory<TreatmentProvider>(() => TreatmentProvider(getIt()))
+    ..registerFactory<PatientProvider>(() => PatientProvider(getIt(), getIt()));
 }

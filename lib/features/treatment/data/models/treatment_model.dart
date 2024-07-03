@@ -1,11 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:noviindus_machine_test/features/treatment/domain/entity/treatment.dart';
 
-part 'branch_model.g.dart';
+part 'treatment_model.g.dart';
 
 @JsonSerializable()
 class TreatmentModel extends Treatment {
   TreatmentModel({
     required super.id,
+    required super.price,
     required super.name,
   });
 

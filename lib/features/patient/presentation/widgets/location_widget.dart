@@ -11,14 +11,7 @@ class LocationWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Location",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Color.fromARGB(255, 0, 0, 0),
-          ),
-        ),
+        Text("Location", style: context.theme.textTheme.labelLarge),
         const SizedBox(height: 8),
         Consumer<PatientProvider>(
           builder: (context, provider, child) {

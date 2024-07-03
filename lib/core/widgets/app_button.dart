@@ -4,10 +4,12 @@ class AppButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
   final bool isLoading;
+  final double width;
   const AppButton({
     super.key,
     required this.onPressed,
     required this.text,
+    this.width = double.infinity,
     this.isLoading = false,
   });
 
@@ -15,6 +17,9 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
+      style: ButtonStyle(
+        minimumSize: MaterialStateProperty.all<Size>(Size(width, 50)),
+      ),
       child: !isLoading
           ? Text(
               text,

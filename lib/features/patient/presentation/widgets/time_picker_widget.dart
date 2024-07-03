@@ -16,7 +16,7 @@ class TimePickerWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "Date",
+          "Time",
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,

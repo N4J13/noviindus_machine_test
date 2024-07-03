@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:noviindus_machine_test/features/patient/data/models/patient_request_model.dart';
 import 'package:noviindus_machine_test/features/patient/domain/entity/patient_entity.dart';
 import 'package:noviindus_machine_test/features/patient/domain/usecases/get_patient_list.dart';
+import 'package:noviindus_machine_test/features/patient/domain/usecases/register_patient.dart';
+import 'package:noviindus_machine_test/features/treatment/domain/entity/treatment_data.dart';
 
 class PatientProvider extends ChangeNotifier {
   final GetPatientListUseCase _getPatientListUseCase;
+  final RegisterPatient _registerPatient;
 
-  PatientProvider(this._getPatientListUseCase);
+  PatientProvider(this._getPatientListUseCase, this._registerPatient);
 
   List<Patient> _patientList = [];
   final List<String> _locations = [
@@ -44,12 +48,16 @@ class PatientProvider extends ChangeNotifier {
     required String discountAmount,
     required String advanceAmount,
     required String balanceAmount,
+    required String? branchId,
+    required List<TreatmentData> treatmentData,
   }) async {
     if (selectedHour == null ||
         selectedMinute == null ||
-        _selectedDate == null) {
+        _selectedDate == null ||
+        branchId == null ||
+        treatmentData.isEmpty) {
       _state = PatientState.error;
-      _errorMessage = 'Please select time or date';
+      _errorMessage = 'Please complete the form';
       notifyListeners();
       return;
     }
@@ -60,12 +68,66 @@ class PatientProvider extends ChangeNotifier {
     String paymentOption = _selectedPaymentOption ?? 'Cash';
     String date = formattedDate ?? '';
     String time = formatTime(selectedHour, selectedMinute);
+    List<int> treatmentIds = treatmentData.map((e) => e.treatment.id).toList();
+    List<int> noOfMalePatients = treatmentData
+        .where((e) => e.noOfMalePatients > 0)
+        .map((e) => e.treatment.id)
+        .toList();
+    List<int> noOfFemalePatients = treatmentData
+        .where((e) => e.noOfFemalePatients > 0)
+        .map((e) => e.treatment.id)
+        .toList();
 
-    print(
-        '$name, $whatsappNumber, $address, $totalAmount, $discountAmount, $advanceAmount, $balanceAmount, $paymentOption, $date, $time');
+    PatientRequestModel request = PatientRequestModel(
+      name: name,
+      id: "",
+      phone: whatsappNumber,
+      executive: '1',
+      address: address,
+      payment: paymentOption,
+      totalAmount: double.parse(totalAmount),
+      discountAmount: double.parse(discountAmount),
+      advanceAmount: double.parse(advanceAmount),
+      balanceAmount: double.parse(balanceAmount),
+      dateAndTime: '$date-$time',
+      branch: int.parse(branchId),
+      male: noOfMalePatients,
+      female: noOfFemalePatients,
+      treatments: treatmentIds,
+    );
 
-    // _state = PatientState.registered;
-    // notifyListeners();
+    PatientRequestModel dummyData = PatientRequestModel(
+      name: name,
+      id: '',
+      phone: whatsappNumber,
+      executive: 'Excecutive',
+      address: address,
+      payment: paymentOption,
+      totalAmount: double.parse(totalAmount),
+      discountAmount: double.parse(discountAmount),
+      advanceAmount: double.parse(advanceAmount),
+      balanceAmount: double.parse(balanceAmount),
+      dateAndTime: '$date-$time',
+      branch: int.parse(branchId),
+      male: noOfMalePatients,
+      female: noOfFemalePatients,
+      treatments: treatmentIds,
+    );
+
+    final result = await _registerPatient.call(dummyData);
+
+    result.fold(
+      (failure) {
+        _state = PatientState.error;
+        _errorMessage = failure.message;
+        notifyListeners();
+      },
+      (patient) {
+        _state = PatientState.registered;
+        print("Patient registered successfully");
+        notifyListeners();
+      },
+    );
   }
 
   // Payment options
@@ -140,6 +202,9 @@ class PatientProvider extends ChangeNotifier {
     _selectedDate = null;
     selectedHour = null;
     selectedMinute = null;
+    _selectedPaymentOption = 'Cash';
+    _selectedLocation = null;
+
     notifyListeners();
   }
 

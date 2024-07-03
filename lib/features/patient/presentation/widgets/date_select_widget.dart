@@ -14,13 +14,9 @@ class DateSelectWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Date",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Color.fromARGB(255, 0, 0, 0),
-          ),
+          style: context.theme.textTheme.labelLarge,
         ),
         const SizedBox(height: 8),
         GestureDetector(

@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:noviindus_machine_test/core/extensions/context_extension.dart';
 import 'package:noviindus_machine_test/core/widgets/app_button.dart';
 import 'package:noviindus_machine_test/core/widgets/app_textformfield.dart';
+import 'package:noviindus_machine_test/features/branch/presentation/providers/branch_provider.dart';
 import 'package:noviindus_machine_test/features/branch/presentation/widgets/select_branch_widget.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/pages/patient_list_page.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/providers/patient_provider.dart';
@@ -12,6 +13,8 @@ import 'package:noviindus_machine_test/features/patient/presentation/widgets/dat
 import 'package:noviindus_machine_test/features/patient/presentation/widgets/location_widget.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/widgets/payment_option_widget.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/widgets/time_picker_widget.dart';
+import 'package:noviindus_machine_test/features/treatment/presentation/providers/treatment_provider.dart';
+import 'package:noviindus_machine_test/features/treatment/presentation/widgets/add_treatment.dart';
 import 'package:provider/provider.dart';
 
 class PatientRegisterPage extends StatefulWidget {
@@ -134,6 +137,10 @@ class _PatientRegisterPageState extends State<PatientRegisterPage> {
                       SizedBox(
                         height: context.height * 0.025,
                       ),
+                      const AddTreatmentWidget(),
+                      SizedBox(
+                        height: context.height * 0.025,
+                      ),
                       AppTextFormField(
                         controller: balanceAmountController,
                         keyboardType: TextInputType.number,
@@ -166,8 +173,17 @@ class _PatientRegisterPageState extends State<PatientRegisterPage> {
                                 address: addressController.text,
                                 totalAmount: totalAmountController.text,
                                 discountAmount: discountAmountController.text,
+                                treatmentData: Provider.of<TreatmentProvider>(
+                                        context,
+                                        listen: false)
+                                    .treatmentData,
                                 advanceAmount: advanceAmountController.text,
                                 balanceAmount: balanceAmountController.text,
+                                branchId: Provider.of<BranchProvider>(context,
+                                        listen: false)
+                                    .selectedBranch!
+                                    .id
+                                    .toString(),
                               );
 
                               if (provider.state == PatientState.registered) {

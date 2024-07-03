@@ -8,6 +8,7 @@ import 'package:noviindus_machine_test/features/branch/presentation/providers/br
 import 'package:noviindus_machine_test/features/patient/presentation/pages/patient_list_page.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/pages/patient_register_page.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/providers/patient_provider.dart';
+import 'package:noviindus_machine_test/features/treatment/presentation/providers/treatment_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,7 +17,8 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (_) => getIt<AuthProvider>()),
       ChangeNotifierProvider(create: (_) => getIt<PatientProvider>()),
-      ChangeNotifierProvider(create: (_) => getIt<BranchProvider>())
+      ChangeNotifierProvider(create: (_) => getIt<BranchProvider>()),
+      ChangeNotifierProvider(create: (_) => getIt<TreatmentProvider>()),
     ],
     child: const MyApp(),
   ));
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: const SplashPage(),
+      home: const PatientRegisterPage(),
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => const PatientListPage(),
         '/login': (BuildContext context) => const LoginPage(),
