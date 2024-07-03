@@ -7,10 +7,10 @@ part 'patient_model.g.dart';
 class PatientModel extends Patient {
   const PatientModel({
     required super.id,
-    required super.name,
-    required super.treatmentName,
-    required super.dateAndTime,
-    required super.user,
+    super.name,
+    super.treatmentName,
+    super.dateAndTime,
+    super.user,
   });
 
   @override
@@ -19,24 +19,24 @@ class PatientModel extends Patient {
 
   @override
   @JsonKey(name: 'name')
-  String get name => super.name;
+  String get name => super.name ?? '';
 
   @override
   @JsonKey(name: 'treatment_name')
-  String get treatmentName => super.treatmentName;
+  String get treatmentName => super.treatmentName ?? '';
 
   @override
   @JsonKey(name: 'date_nd_time')
-  DateTime get dateAndTime => super.dateAndTime;
+  DateTime get dateAndTime => super.dateAndTime ?? DateTime.now();
 
   @override
   @JsonKey(name: 'user')
-  String get user => super.user;
+  String get user => super.user ?? "Jishnu";
 
   factory PatientModel.fromJson(Map<String, dynamic> json) {
     final patientDetailsSet = json['patientdetails_set'] as List;
     final treatmentName = patientDetailsSet.isNotEmpty
-        ? patientDetailsSet[0]['treatment_name'] as String
+        ? patientDetailsSet[0]['treatment_name'] ?? ''
         : '';
 
     return _$PatientModelFromJson({

@@ -13,6 +13,7 @@ import 'package:noviindus_machine_test/features/patient/data/repositories/patien
 import 'package:noviindus_machine_test/features/patient/domain/repositories/patient_repository.dart';
 import 'package:noviindus_machine_test/features/patient/domain/usecases/get_patient_list.dart';
 import 'package:noviindus_machine_test/features/patient/domain/usecases/register_patient.dart';
+import 'package:noviindus_machine_test/features/patient/presentation/providers/patient_provider.dart';
 import 'package:noviindus_machine_test/features/treatment/data/datasources/treatment_remote_data_source.dart';
 import 'package:noviindus_machine_test/features/treatment/data/repositories/treatment_repository_impl.dart';
 import 'package:noviindus_machine_test/features/treatment/domain/repositories/treatment_repository.dart';
@@ -34,41 +35,44 @@ void setupLocator() {
 
 // Register use cases
 void _registerUseCases() {
-  getIt..registerFactory<LoginUseCase>(() => LoginUseCase(getIt()));
-  // ..registerFactory<GetBranchList>(() => GetBranchList(getIt()))
-  // ..registerFactory<GetTreatmentList>(() => GetTreatmentList(getIt()))
-  // ..registerFactory<GetPatientListUseCase>(
-  //     () => GetPatientListUseCase(getIt()))
+  getIt
+    ..registerFactory<LoginUseCase>(() => LoginUseCase(getIt()))
+    // ..registerFactory<GetBranchList>(() => GetBranchList(getIt()))
+    // ..registerFactory<GetTreatmentList>(() => GetTreatmentList(getIt()))
+    ..registerFactory<GetPatientListUseCase>(
+        () => GetPatientListUseCase(getIt()));
   // ..registerFactory<RegisterPatient>(() => RegisterPatient(getIt()));
 }
 
 // Register repositories
 void _registerRepositories() {
-  getIt..registerFactory<AuthRepository>(() => AuthRepositoryImpl(getIt()));
-  // ..registerFactory<BranchRepository>(() => BranchRepositoryImpl(getIt()))
-  // ..registerFactory<TreatmentRepository>(
-  //     () => TreatmentRepositoryImpl(getIt()))
-  // ..registerFactory<PatientRepository>(() => PatientRepositoryImpl(getIt()));
+  getIt
+    ..registerFactory<AuthRepository>(() => AuthRepositoryImpl(getIt()))
+    // ..registerFactory<BranchRepository>(() => BranchRepositoryImpl(getIt()))
+    // ..registerFactory<TreatmentRepository>(
+    //     () => TreatmentRepositoryImpl(getIt()))
+    ..registerFactory<PatientRepository>(() => PatientRepositoryImpl(getIt()));
 }
 
 // Register data sources
 void _registerDataSources() {
   getIt
     ..registerFactory<AuthRemoteDataSource>(
-        () => AuthRemoteDataSource(getIt(), getIt()));
-  // ..registerFactory<BranchRemoteDataSource>(
-  //     () => BranchRemoteDataSource(getIt()))
-  // ..registerFactory<TreatmentRemoteDataSource>(
-  //     () => TreatmentRemoteDataSource(getIt()))
-  // ..registerFactory<PatientRemoteDataSource>(
-  //     () => PatientRemoteDataSource(getIt()));
+        () => AuthRemoteDataSource(getIt(), getIt()))
+    // ..registerFactory<BranchRemoteDataSource>(
+    //     () => BranchRemoteDataSource(getIt()))
+    // ..registerFactory<TreatmentRemoteDataSource>(
+    //     () => TreatmentRemoteDataSource(getIt()))
+    ..registerFactory<PatientRemoteDataSource>(
+        () => PatientRemoteDataSource(getIt()));
 }
 
 // Register providers
 void _registerProviders() {
-  getIt.registerFactory<AuthProvider>(() => AuthProvider(getIt()));
-  // ..registerFactory<BranchRepository>(() => BranchRepositoryImpl(getIt()))
-  // ..registerFactory<TreatmentRepository>(
-  //     () => TreatmentRepositoryImpl(getIt()))
-  // ..registerFactory<PatientRepository>(() => PatientRepositoryImpl(getIt()));
+  getIt
+    ..registerFactory<AuthProvider>(() => AuthProvider(getIt()))
+    // ..registerFactory<BranchRepository>(() => BranchRepositoryImpl(getIt()))
+    // ..registerFactory<TreatmentRepository>(
+    //     () => TreatmentRepositoryImpl(getIt()))
+    ..registerFactory<PatientProvider>(() => PatientProvider(getIt()));
 }

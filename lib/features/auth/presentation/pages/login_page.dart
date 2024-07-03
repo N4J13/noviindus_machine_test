@@ -67,12 +67,14 @@ class _LoginPageState extends State<LoginPage> {
                       AppTextFormField(
                         controller: emailController,
                         label: 'Email',
+                        filled: true,
                         hint: 'Enter your email',
                       ),
                       const SizedBox(height: 30),
                       AppTextFormField(
                         controller: passwordController,
                         label: 'Password',
+                        filled: true,
                         hint: 'Enter your password',
                       ),
                       SizedBox(height: context.height * 0.05),

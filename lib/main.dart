@@ -5,6 +5,8 @@ import 'package:noviindus_machine_test/di/locator.dart';
 import 'package:noviindus_machine_test/features/auth/presentation/pages/login_page.dart';
 import 'package:noviindus_machine_test/features/auth/presentation/providers/auth_provider.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/pages/patient_list_page.dart';
+import 'package:noviindus_machine_test/features/patient/presentation/pages/patient_register_page.dart';
+import 'package:noviindus_machine_test/features/patient/presentation/providers/patient_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -12,6 +14,7 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => getIt<AuthProvider>()),
+      ChangeNotifierProvider(create: (_) => getIt<PatientProvider>())
     ],
     child: const MyApp(),
   ));
@@ -29,6 +32,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => const PatientListPage(),
         '/login': (BuildContext context) => const LoginPage(),
+        "/register": (context) => const PatientRegisterPage(),
       },
     );
   }

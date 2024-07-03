@@ -14,7 +14,7 @@ class PatientRemoteDataSource {
     try {
       final response = await apiProvider.get(Endpoints.patientList);
       if (response.statusCode == 200) {
-        final patient = response.data["pati"] as List;
+        final patient = response.data["patient"] as List;
         final List<PatientModel> patientList = patient
             .map((e) => PatientModel.fromJson(e as Map<String, dynamic>))
             .toList();
@@ -22,6 +22,7 @@ class PatientRemoteDataSource {
       }
       return Left(ServerFailure("Server error occurred"));
     } catch (e) {
+      print(e);
       return Left(ServerFailure("Server error occurred"));
     }
   }

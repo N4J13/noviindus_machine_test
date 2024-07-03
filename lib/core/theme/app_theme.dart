@@ -30,7 +30,7 @@ ThemeData appTheme = ThemeData(
         minimumSize: MaterialStateProperty.all(
           const Size(
             double.infinity,
-            55,
+            50,
           ),
         ),
         backgroundColor: MaterialStateProperty.resolveWith((states) {
@@ -78,10 +78,6 @@ ThemeData appTheme = ThemeData(
         borderSide: BorderSide(color: Color.fromARGB(64, 217, 217, 217)),
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Color.fromARGB(64, 217, 217, 217)),
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-      ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: AppColors.primaryColor),
         borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -99,6 +95,24 @@ ThemeData appTheme = ThemeData(
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
     ),
+    dropdownMenuTheme: const DropdownMenuThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+      filled: false,
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0)),
+        // fully rounded border
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+      ),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0)),
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+      ),
+      labelStyle: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w300,
+        color: Color.fromRGBO(0, 0, 0, 0.3),
+      ),
+    )),
     disabledColor: const Color.fromARGB(255, 147, 147, 148),
     colorScheme: const ColorScheme.light(
       primary: AppColors.primaryColor,
@@ -167,7 +181,7 @@ ThemeData appTheme = ThemeData(
       ),
       titleMedium: TextStyle(
         fontSize: 24,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w400,
         color: Color(0xff0e1524),
       ),
       bodyLarge: TextStyle(
@@ -182,9 +196,9 @@ ThemeData appTheme = ThemeData(
         color: Color.fromARGB(255, 0, 21, 71),
       ),
       bodySmall: TextStyle(
-        fontSize: 12,
+        fontSize: 15,
         fontWeight: FontWeight.w400,
-        color: Color(0xff000000),
+        color: Color.fromARGB(123, 0, 0, 0),
       ),
       displaySmall: TextStyle(
         fontSize: 17,
@@ -192,9 +206,9 @@ ThemeData appTheme = ThemeData(
         color: Color.fromARGB(255, 20, 30, 52),
       ),
       titleSmall: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: Color(0xff746f6f),
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
       ),
       labelLarge: TextStyle(
         fontSize: 16,
@@ -202,8 +216,8 @@ ThemeData appTheme = ThemeData(
         color: Color(0xff404040),
       ),
       labelMedium: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
         color: Color(0xffc1c4d2),
       ),
     ));
