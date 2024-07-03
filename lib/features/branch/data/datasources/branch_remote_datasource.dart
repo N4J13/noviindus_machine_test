@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:noviindus_machine_test/core/api/api_provider.dart';
 import 'package:noviindus_machine_test/core/api/endpoints.dart';
 import 'package:noviindus_machine_test/core/error/failure.dart';
+import 'package:noviindus_machine_test/features/branch/data/models/branch_model.dart';
 
 class BranchRemoteDataSource {
   final ApiProvider apiProvider;
@@ -21,6 +22,7 @@ class BranchRemoteDataSource {
         return Left(ServerFailure("Server error occurred"));
       }
     } catch (e) {
+      print(e);
       return Left(ServerFailure("Server error occurred"));
     }
   }

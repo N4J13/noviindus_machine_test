@@ -1,5 +1,5 @@
 class Branch {
-  final String id;
+  final int id;
   final String name;
 
   Branch({

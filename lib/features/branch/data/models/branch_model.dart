@@ -6,12 +6,9 @@ part 'branch_model.g.dart';
 @JsonSerializable()
 class BranchModel extends Branch {
   BranchModel({
-    required String id,
-    required String name,
-  }) : super(
-          id: id,
-          name: name,
-        );
+    required super.id,
+    required super.name,
+  });
 
   factory BranchModel.fromJson(Map<String, dynamic> json) =>
       _$BranchModelFromJson(json);

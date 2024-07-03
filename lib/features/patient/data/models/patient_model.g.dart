@@ -8,8 +8,8 @@ part of 'patient_model.dart';
 
 PatientModel _$PatientModelFromJson(Map<String, dynamic> json) => PatientModel(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      treatmentName: json['treatment_name'] as String,
+      name: json['name'] as String?,
+      treatmentName: json['treatment_name'] as String?,
       dateAndTime: json['date_nd_time'] == null
           ? null
           : DateTime.parse(json['date_nd_time'] as String),

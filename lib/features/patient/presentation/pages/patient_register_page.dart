@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:noviindus_machine_test/core/extensions/context_extension.dart';
 import 'package:noviindus_machine_test/core/widgets/app_button.dart';
 import 'package:noviindus_machine_test/core/widgets/app_textformfield.dart';
+import 'package:noviindus_machine_test/features/branch/presentation/widgets/select_branch_widget.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/pages/patient_list_page.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/providers/patient_provider.dart';
 import 'package:noviindus_machine_test/features/patient/presentation/widgets/date_select_widget.dart';
@@ -126,6 +127,10 @@ class _PatientRegisterPageState extends State<PatientRegisterPage> {
                         height: context.height * 0.025,
                       ),
                       const LocationWidget(),
+                      SizedBox(
+                        height: context.height * 0.025,
+                      ),
+                      const SelectBranchWidget(),
                       SizedBox(
                         height: context.height * 0.025,
                       ),
