@@ -13,7 +13,7 @@ class AppTextFormField extends StatelessWidget {
     super.key,
     required this.controller,
     this.label,
-    this.filled = false,
+    this.filled = true,
     this.prefixIcon,
     this.hint,
     this.keyboardType,

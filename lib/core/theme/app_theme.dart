@@ -99,12 +99,8 @@ ThemeData appTheme = ThemeData(
         inputDecorationTheme: InputDecorationTheme(
       filled: false,
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0)),
+        borderSide: BorderSide(color: Color.fromRGBO(150, 147, 147, 0)),
         // fully rounded border
-        borderRadius: BorderRadius.all(Radius.circular(30)),
-      ),
-      border: OutlineInputBorder(
-        borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0)),
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
       labelStyle: TextStyle(
@@ -140,34 +136,18 @@ ThemeData appTheme = ThemeData(
     dividerTheme: const DividerThemeData(
       color: Color(0xffe5e7eb),
     ),
+    radioTheme: const RadioThemeData(),
     fontFamily: GoogleFonts.poppins().fontFamily,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
-      elevation: 0,
-      selectedItemColor: AppColors.primaryColor,
-      unselectedItemColor: const Color(0xffa8b2c2),
-      selectedLabelStyle: TextStyle(
-        fontSize: 12,
-        fontFamily: GoogleFonts.poppins().fontFamily,
-        fontWeight: FontWeight.w600,
-      ),
-      unselectedLabelStyle: TextStyle(
-        fontSize: 12,
-        fontFamily: GoogleFonts.poppins().fontFamily,
+    datePickerTheme: const DatePickerThemeData(
+      weekdayStyle: TextStyle(
+        fontSize: 14,
         fontWeight: FontWeight.w400,
+        color: Color(0xff0e1524),
       ),
-    ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        )),
-    dialogTheme: DialogTheme(
-      actionsPadding: const EdgeInsets.all(20),
-      backgroundColor: Colors.white,
-      surfaceTintColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
+      dayStyle: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: Color(0xff0e1524),
       ),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(

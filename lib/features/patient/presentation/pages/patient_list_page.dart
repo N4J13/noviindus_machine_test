@@ -106,38 +106,38 @@ class _PatientListPageState extends State<PatientListPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
+}
 
-  Row buildNotificationIcon(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/login');
-          },
-          icon: Stack(
-            children: [
-              const Icon(
-                Ionicons.notifications_outline,
-                size: 30,
-                color: Colors.black,
-              ),
-              Positioned(
-                right: 5,
-                top: 2,
-                child: Container(
-                  height: 8,
-                  width: 8,
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                  ),
+Row buildNotificationIcon(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [
+      IconButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/login');
+        },
+        icon: Stack(
+          children: [
+            const Icon(
+              Ionicons.notifications_outline,
+              size: 30,
+              color: Colors.black,
+            ),
+            Positioned(
+              right: 5,
+              top: 2,
+              child: Container(
+                height: 8,
+                width: 8,
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
-    );
-  }
+      ),
+    ],
+  );
 }
