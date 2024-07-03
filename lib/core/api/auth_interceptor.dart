@@ -23,10 +23,6 @@ class AuthInterceptor extends Interceptor {
   Future<String> getUserToken() async {
     final token = await _storageService.readToken();
 
-    if (token == null) {
-      throw Exception('User is not logged in');
-    }
-
-    return token;
+    return token ?? "";
   }
 }
