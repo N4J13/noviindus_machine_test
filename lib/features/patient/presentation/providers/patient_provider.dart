@@ -80,24 +80,6 @@ class PatientProvider extends ChangeNotifier {
 
     PatientRequestModel request = PatientRequestModel(
       name: name,
-      id: "",
-      phone: whatsappNumber,
-      executive: '1',
-      address: address,
-      payment: paymentOption,
-      totalAmount: double.parse(totalAmount),
-      discountAmount: double.parse(discountAmount),
-      advanceAmount: double.parse(advanceAmount),
-      balanceAmount: double.parse(balanceAmount),
-      dateAndTime: '$date-$time',
-      branch: int.parse(branchId),
-      male: noOfMalePatients,
-      female: noOfFemalePatients,
-      treatments: treatmentIds,
-    );
-
-    PatientRequestModel dummyData = PatientRequestModel(
-      name: name,
       id: '',
       phone: whatsappNumber,
       executive: 'Excecutive',
@@ -114,7 +96,7 @@ class PatientProvider extends ChangeNotifier {
       treatments: treatmentIds,
     );
 
-    final result = await _registerPatient.call(dummyData);
+    final result = await _registerPatient.call(request);
 
     result.fold(
       (failure) {
@@ -124,7 +106,6 @@ class PatientProvider extends ChangeNotifier {
       },
       (patient) {
         _state = PatientState.registered;
-        print("Patient registered successfully");
         notifyListeners();
       },
     );
@@ -180,13 +161,11 @@ class PatientProvider extends ChangeNotifier {
   void setSelectedHour(String hour) {
     selectedHour = hour;
     notifyListeners();
-    print(selectedHour);
   }
 
   void setSelectedMinute(String minute) {
     selectedMinute = minute;
     notifyListeners();
-    print(selectedMinute);
   }
 
   // Getters

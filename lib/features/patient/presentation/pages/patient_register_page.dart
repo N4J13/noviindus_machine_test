@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:noviindus_machine_test/core/extensions/context_extension.dart';
 import 'package:noviindus_machine_test/core/widgets/app_button.dart';

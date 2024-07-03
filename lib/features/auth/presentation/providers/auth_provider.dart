@@ -18,7 +18,6 @@ class AuthProvider extends ChangeNotifier {
       final result = await loginUseCase.call(email: email, password: password);
       result.fold(
         (error) {
-          print("sff");
           _status = AuthStatus.error;
           _errorMessage = error.message;
           notifyListeners();

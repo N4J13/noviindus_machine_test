@@ -22,7 +22,6 @@ class BranchRemoteDataSource {
         return Left(ServerFailure("Server error occurred"));
       }
     } catch (e) {
-      print(e);
       return Left(ServerFailure("Server error occurred"));
     }
   }

@@ -69,10 +69,10 @@ class TreatmentProvider extends ChangeNotifier {
     final index = _treatmentData.indexWhere(
       (element) => element.treatment.id == treatmentData.treatment.id,
     );
-    // _treatmentData[index] = treatmentData.copyWith(
-    //   noOfMalePatients: noOfMalePatients,
-    //   noOfFemalePatients: noOfFemalePatients,
-    // );
+    _treatmentData[index] = treatmentData.copyWith(
+      noOfMalePatients: noOfMalePatients,
+      noOfFemalePatients: noOfFemalePatients,
+    );
     notifyListeners();
   }
 

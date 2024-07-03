@@ -23,7 +23,6 @@ class PatientRemoteDataSource {
       }
       return Left(ServerFailure("Server error occurred"));
     } catch (e) {
-      print(e);
       return Left(ServerFailure("Server error occurred"));
     }
   }
@@ -54,7 +53,6 @@ class PatientRemoteDataSource {
         return Left(ServerFailure("Server error occurred"));
       }
     } catch (e) {
-      print(e);
       return Left(ServerFailure("Server error occurred"));
     }
   }

@@ -23,7 +23,6 @@ class TreatmentRemoteDataSource {
         return Left(ServerFailure("Server error occurred"));
       }
     } catch (e) {
-      print(e);
       return Left(NetworkFailure("Server error occurred"));
     }
   }
