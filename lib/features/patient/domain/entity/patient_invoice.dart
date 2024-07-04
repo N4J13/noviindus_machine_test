@@ -1,3 +1,4 @@
+import 'package:noviindus_machine_test/features/branch/domain/entity/branch.dart';
 import 'package:noviindus_machine_test/features/treatment/domain/entity/treatment_data.dart';
 
 class PatientInvoiceRequest {
@@ -6,7 +7,7 @@ class PatientInvoiceRequest {
   final String phone;
   final String address;
   final String executive;
-  final String branch;
+  final Branch branch;
   final String date;
   final String time;
   final String createdDate;

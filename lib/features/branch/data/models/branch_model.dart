@@ -8,6 +8,11 @@ class BranchModel extends Branch {
   BranchModel({
     required super.id,
     required super.name,
+    required super.address,
+    required super.phone,
+    required super.mail,
+    required super.gst,
+    required super.location,
   });
 
   factory BranchModel.fromJson(Map<String, dynamic> json) =>

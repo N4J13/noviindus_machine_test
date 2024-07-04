@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:noviindus_machine_test/core/services/pdf_service.dart';
+import 'package:noviindus_machine_test/features/branch/domain/entity/branch.dart';
 import 'package:noviindus_machine_test/features/patient/data/models/patient_request_model.dart';
 import 'package:noviindus_machine_test/features/patient/domain/entity/patient_entity.dart';
+import 'package:noviindus_machine_test/features/patient/domain/entity/patient_invoice.dart';
 import 'package:noviindus_machine_test/features/patient/domain/usecases/get_patient_list.dart';
 import 'package:noviindus_machine_test/features/patient/domain/usecases/register_patient.dart';
 import 'package:noviindus_machine_test/features/treatment/domain/entity/treatment_data.dart';
@@ -9,6 +12,7 @@ import 'package:noviindus_machine_test/features/treatment/domain/entity/treatmen
 class PatientProvider extends ChangeNotifier {
   final GetPatientListUseCase _getPatientListUseCase;
   final RegisterPatient _registerPatient;
+  final PdfService _pdfService = PdfService();
 
   PatientProvider(this._getPatientListUseCase, this._registerPatient);
 
@@ -48,13 +52,13 @@ class PatientProvider extends ChangeNotifier {
     required String discountAmount,
     required String advanceAmount,
     required String balanceAmount,
-    required String? branchId,
+    required Branch? branch,
     required List<TreatmentData> treatmentData,
   }) async {
     if (selectedHour == null ||
         selectedMinute == null ||
         _selectedDate == null ||
-        branchId == null ||
+        branch == null ||
         treatmentData.isEmpty) {
       _state = PatientState.error;
       _errorMessage = 'Please complete the form';
@@ -90,7 +94,7 @@ class PatientProvider extends ChangeNotifier {
       advanceAmount: double.parse(advanceAmount),
       balanceAmount: double.parse(balanceAmount),
       dateAndTime: '$date-$time',
-      branch: int.parse(branchId),
+      branch: branch.id,
       male: noOfMalePatients,
       female: noOfFemalePatients,
       treatments: treatmentIds,
@@ -104,11 +108,33 @@ class PatientProvider extends ChangeNotifier {
         _errorMessage = failure.message;
         notifyListeners();
       },
-      (patient) {
+      (patient) async {
         _state = PatientState.registered;
-        notifyListeners();
       },
     );
+
+    if (_state == PatientState.registered) {
+      await _pdfService.generateAndPrintPDF(PatientInvoiceRequest(
+        name: name,
+        id: "",
+        phone: whatsappNumber,
+        address: address,
+        executive: "executive",
+        branch: branch,
+        date: date,
+        time: time,
+        createdDate: _formatCurrentDate(),
+        createdTime: _formatCurrentTime(),
+        treatmentData: treatmentData,
+        totalAmount: totalAmount,
+        discountAmount: discountAmount,
+        advanceAmount: advanceAmount,
+        balanceAmount: balanceAmount,
+        payment: paymentOption,
+      ));
+    }
+
+    notifyListeners();
   }
 
   // Payment options
@@ -123,6 +149,18 @@ class PatientProvider extends ChangeNotifier {
   void selectPaymentOption(String? option) {
     _selectedPaymentOption = option;
     notifyListeners();
+  }
+
+  String _formatCurrentTime() {
+    final now = DateTime.now();
+    final formatter = DateFormat('hh:mm a');
+    return formatter.format(now);
+  }
+
+  String _formatCurrentDate() {
+    final now = DateTime.now();
+    final formatter = DateFormat('dd/MM/yyyy');
+    return formatter.format(now);
   }
 
   String formatTime(String? hour, String? minute) {

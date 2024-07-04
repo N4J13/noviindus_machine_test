@@ -172,16 +172,15 @@ class _PatientRegisterPageState extends State<PatientRegisterPage> {
                                 totalAmount: totalAmountController.text,
                                 discountAmount: discountAmountController.text,
                                 treatmentData: Provider.of<TreatmentProvider>(
-                                        context,
-                                        listen: false)
-                                    .treatmentData,
+                                  context,
+                                  listen: false,
+                                ).treatmentData,
                                 advanceAmount: advanceAmountController.text,
                                 balanceAmount: balanceAmountController.text,
-                                branchId: Provider.of<BranchProvider>(context,
-                                        listen: false)
-                                    .selectedBranch!
-                                    .id
-                                    .toString(),
+                                branch: Provider.of<BranchProvider>(
+                                  context,
+                                  listen: false,
+                                ).selectedBranch!,
                               );
 
                               if (provider.state == PatientState.registered) {
