@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: const PatientRegisterPage(),
+      home: const PatientListPage(),
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => const PatientListPage(),
         '/login': (BuildContext context) => const LoginPage(),

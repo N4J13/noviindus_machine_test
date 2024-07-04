@@ -42,6 +42,16 @@ class _SelectBranchWidgetState extends State<SelectBranchWidget> {
           } else {
             return DropdownButtonFormField(
               value: provider.selectedBranch,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                enabledBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(64, 217, 217, 217)),
+                ),
+              ),
               onChanged: (Branch? value) {
                 provider.selectBranch(value!);
               },

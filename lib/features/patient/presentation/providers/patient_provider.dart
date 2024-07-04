@@ -23,7 +23,7 @@ class PatientProvider extends ChangeNotifier {
     'Manjeri',
     'Kozhikode',
   ];
-  PatientState _state = PatientState.loading;
+  PatientState _state = PatientState.initial;
   String? _errorMessage;
 
   Future<void> getPatientList() async {
@@ -234,4 +234,4 @@ class PatientProvider extends ChangeNotifier {
   String? get selectedLocation => _selectedLocation;
 }
 
-enum PatientState { loading, loaded, registered, error }
+enum PatientState { initial, loading, loaded, registered, error }

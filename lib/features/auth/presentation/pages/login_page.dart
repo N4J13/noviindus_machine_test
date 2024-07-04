@@ -113,31 +113,36 @@ class _LoginPageState extends State<LoginPage> {
                       Center(
                         child: RichText(
                             textAlign: TextAlign.center,
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text:
-                                    'By creating or logging into an account you are agreeing with our',
-                                style: context.theme.textTheme.bodySmall,
-                              ),
-                              TextSpan(
-                                text: ' Terms and Conditions',
+                            text: TextSpan(
                                 style:
                                     context.theme.textTheme.bodySmall?.copyWith(
-                                  color: context.theme.colorScheme.tertiary,
+                                  fontSize: 12,
                                 ),
-                              ),
-                              TextSpan(
-                                text: ' and',
-                                style: context.theme.textTheme.bodySmall,
-                              ),
-                              TextSpan(
-                                text: ' Privacy Policy',
-                                style:
-                                    context.theme.textTheme.bodySmall?.copyWith(
-                                  color: context.theme.colorScheme.tertiary,
-                                ),
-                              ),
-                            ])),
+                                children: [
+                                  const TextSpan(
+                                    text:
+                                        'By creating or logging into an account you are agreeing with our',
+                                  ),
+                                  TextSpan(
+                                    text: ' Terms and Conditions',
+                                    style: context.theme.textTheme.bodySmall
+                                        ?.copyWith(
+                                      color: context.theme.colorScheme.tertiary,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  const TextSpan(
+                                    text: ' and ',
+                                  ),
+                                  TextSpan(
+                                    text: 'Privacy Policy',
+                                    style: context.theme.textTheme.bodySmall
+                                        ?.copyWith(
+                                      color: context.theme.colorScheme.tertiary,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ])),
                       )
                     ],
                   ),

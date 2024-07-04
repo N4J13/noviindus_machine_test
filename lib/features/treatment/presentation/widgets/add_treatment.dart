@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:noviindus_machine_test/core/extensions/context_extension.dart';
 import 'package:noviindus_machine_test/core/theme/app_colors.dart';
@@ -212,6 +210,7 @@ class _AddTreatmentWidgetState extends State<AddTreatmentWidget> {
                 ),
                 AppButton(
                   text: "Add Treatment",
+                  secondaryType: true,
                   onPressed: () {
                     _showTreatmentPicker(
                       context: context,
@@ -250,6 +249,13 @@ class _AddTreatmentWidgetState extends State<AddTreatmentWidget> {
                   ),
                   const SizedBox(height: 8),
                   DropdownButtonFormField(
+                    decoration: const InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(64, 217, 217, 217)),
+                      ),
+                    ),
                     icon: const Icon(
                       Ionicons.chevron_down_outline,
                     ),
@@ -430,7 +436,7 @@ class _AddTreatmentWidgetState extends State<AddTreatmentWidget> {
       ),
       child: Center(
         child: Text(
-          value.toString(),
+          value == 0 ? "" : value.toString(),
           style: const TextStyle(
             fontSize: 16,
           ),

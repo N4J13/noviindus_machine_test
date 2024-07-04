@@ -163,6 +163,7 @@ class _PatientRegisterPageState extends State<PatientRegisterPage> {
                       Consumer<PatientProvider>(
                         builder: (context, provider, child) {
                           return AppButton(
+                            isLoading: provider.state == PatientState.loading,
                             onPressed: () async {
                               if (!_formKey.currentState!.validate()) return;
                               await provider.registerPatient(
