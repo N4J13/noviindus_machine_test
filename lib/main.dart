@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noviindus_machine_test/core/pages/splash_page.dart';
 import 'package:noviindus_machine_test/core/theme/app_theme.dart';
 import 'package:noviindus_machine_test/di/locator.dart';
 import 'package:noviindus_machine_test/features/auth/presentation/pages/login_page.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: const PatientListPage(),
+      home: const SplashPage(),
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => const PatientListPage(),
         '/login': (BuildContext context) => const LoginPage(),
