@@ -113,9 +113,7 @@ Row buildNotificationIcon(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.end,
     children: [
       IconButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/login');
-        },
+        onPressed: () {},
         icon: Stack(
           children: [
             const Icon(

@@ -25,6 +25,7 @@ class SearchTreatmentWidget extends StatelessWidget {
             ),
             secondaryStyle: true,
             filled: false,
+            validate: false,
             controller: controller,
             hint: "Search for your treatment",
           ),

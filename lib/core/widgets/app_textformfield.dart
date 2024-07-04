@@ -9,6 +9,7 @@ class AppTextFormField extends StatelessWidget {
   final bool filled;
   final Widget? prefixIcon;
   final bool secondaryStyle;
+  final bool validate;
   const AppTextFormField({
     super.key,
     required this.controller,
@@ -17,6 +18,7 @@ class AppTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.hint,
     this.keyboardType,
+    this.validate = true,
     this.secondaryStyle = false,
   });
 
@@ -57,8 +59,10 @@ class AppTextFormField extends StatelessWidget {
             prefixIcon: prefixIcon,
           ),
           validator: (value) {
-            if (value!.isEmpty) {
-              return '$label cannot be empty';
+            if (validate) {
+              if (value == null || value.isEmpty) {
+                return 'This field is required';
+              }
             }
             return null;
           },

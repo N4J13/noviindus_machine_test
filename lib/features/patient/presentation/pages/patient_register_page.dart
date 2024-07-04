@@ -187,11 +187,11 @@ class _PatientRegisterPageState extends State<PatientRegisterPage> {
                               );
 
                               if (provider.state == PatientState.registered) {
-                                Navigator.pushReplacementNamed(
+                                Navigator.pushNamedAndRemoveUntil(
                                   context,
                                   '/home',
+                                  (route) => false,
                                 );
-                                return;
                               }
 
                               if (provider.state == PatientState.error) {
