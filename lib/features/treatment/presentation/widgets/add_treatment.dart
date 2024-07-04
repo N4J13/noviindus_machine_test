@@ -146,7 +146,7 @@ class _AddTreatmentWidgetState extends State<AddTreatmentWidget> {
                                         SizedBox(width: context.width * 0.1),
                                         Row(
                                           children: [
-                                            Text("Male",
+                                            Text("Female",
                                                 style: context
                                                     .theme.textTheme.labelLarge
                                                     ?.copyWith(
