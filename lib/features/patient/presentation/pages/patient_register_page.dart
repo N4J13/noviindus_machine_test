@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:noviindus_machine_test/core/extensions/context_extension.dart';
@@ -185,10 +187,10 @@ class _PatientRegisterPageState extends State<PatientRegisterPage> {
                               );
 
                               if (provider.state == PatientState.registered) {
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const PatientListPage()));
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  '/home',
+                                );
                                 return;
                               }
 

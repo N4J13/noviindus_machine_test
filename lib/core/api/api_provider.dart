@@ -42,10 +42,6 @@ class ApiProvider {
     }
   }
 
-  void setToken(String token) {
-    _dio.options.headers['Authorization'] = 'Bearer $token';
-  }
-
   String _handleError(error) {
     if (error is DioException) {
       if (error.response?.statusCode == 401) {

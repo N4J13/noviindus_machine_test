@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:noviindus_machine_test/core/extensions/context_extension.dart';
 import 'package:noviindus_machine_test/core/widgets/app_button.dart';
@@ -92,7 +94,9 @@ class _LoginPageState extends State<LoginPage> {
                               if (authProvider.status ==
                                   AuthStatus.authenticated) {
                                 Navigator.pushReplacementNamed(
-                                    context, '/home');
+                                  context,
+                                  '/home',
+                                );
                               } else if (authProvider.status ==
                                   AuthStatus.error) {
                                 ScaffoldMessenger.of(context).showSnackBar(

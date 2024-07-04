@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noviindus_machine_test/core/pages/splash_page.dart';
 import 'package:noviindus_machine_test/core/theme/app_theme.dart';
 import 'package:noviindus_machine_test/di/locator.dart';
 import 'package:noviindus_machine_test/features/auth/presentation/pages/login_page.dart';
